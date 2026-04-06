@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sambhavam Coaching Institute — Kota, Rajasthan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2046;
+    --navy-mid: #1a3366;
+    --navy-light: #2a4a8a;
+    --gold: #f5c518;
+    --gold-dark: #d4a800;
+    --gold-light: #fde87a;
+    --white: #ffffff;
+    --off-white: #f8f9fc;
+    --muted: #6b7a99;
+    --red: #e02020;
+    --light-blue: #e8eef8;
+    --border: rgba(13,32,70,0.1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    font-weight: 400;
+    background: var(--white);
+    color: var(--navy);
+    overflow-x: hidden;
+  }
+
+  /* DIAGONAL PATTERN HELPER */
+  .diag-bg {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 18px,
+      rgba(245,197,24,0.07) 18px,
+      rgba(245,197,24,0.07) 19px
+    );
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 68px;
+    box-shadow: 0 4px 24px rgba(13,32,70,0.25);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 0.7rem;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 40px; height: 40px;
+    background: var(--gold);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--navy);
+    flex-shrink: 0;
+  }
+
+  .nav-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-logo-text strong { color: var(--white); font-size: 0.95rem; font-weight: 700; }
+  .nav-logo-text span { color: var(--gold); font-size: 0.7rem; font-weight: 400; letter-spacing: 0.05em; }
+
+  nav ul { display: flex; gap: 2rem; list-style: none; }
+  nav a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; transition: color 0.2s; }
+  nav a:hover { color: var(--gold); }
+
+  .nav-admit {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-admit:hover { background: var(--gold-light) !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { width: 22px; height: 2px; background: white; display: block; }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 5vw;
+    padding-top: 68px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 55%;
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  /* dots pattern */
+  #hero::after {
+    content: '';
+    position: absolute;
+    right: 2%; top: 10%;
+    width: 48%;
+    height: 80%;
+    background-image: radial-gradient(circle, rgba(245,197,24,0.18) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    pointer-events: none;
+  }
+
+  .hero-text { position: relative; z-index: 2; padding: 4rem 0; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(245,197,24,0.15);
+    border: 1px solid rgba(245,197,24,0.3);
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.2s forwards;
+  }
+
+  .hero-badge::before { content: '★'; font-size: 0.8rem; }
+
+  h1 {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.35s forwards;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    max-width: 430px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+
+  .hero-classes {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-bottom: 2.2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.65s forwards;
+  }
+
+  .class-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--white);
+    padding: 0.35rem 0.9rem;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .class-pill.gold { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.85rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    transition: all 0.22s;
+    border: none; cursor: pointer;
+  }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,197,24,0.35); }
+
+  .btn-ghost {
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    padding: 0.85rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.22s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; gap: 1.2rem;
+    align-items: flex-start;
+    padding: 4rem 0 4rem 4vw;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 1.2rem 1.6rem;
+    backdrop-filter: blur(8px);
+    min-width: 200px;
+    transition: all 0.3s;
+  }
+  .stat-card:hover { background: rgba(255,255,255,0.12); border-color: rgba(245,197,24,0.4); transform: translateX(6px); }
+
+  .stat-card .num {
+    font-family: 'Crimson Pro', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-card .label { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.2rem; }
+
+  .hero-admit-badge {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 1rem 1.6rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    animation: pulse 2.5s ease-in-out infinite;
+    width: fit-content;
+  }
+
+  @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(245,197,24,0.4)} 50%{box-shadow:0 0 0 12px rgba(245,197,24,0)} }
+
+  /* ─── MARQUEE ─── */
+  .marquee-bar {
+    background: var(--gold);
+    padding: 0.7rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    animation: marquee 20s linear infinite;
+  }
+
+  .marquee-item {
+    display: inline-flex; align-items: center; gap: 1rem;
+    padding: 0 2.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .marquee-sep { color: var(--navy-mid); font-size: 1.2rem; }
+
+  /* ─── SECTIONS COMMON ─── */
+  section { padding: 5.5rem 5vw; }
+
+  .sec-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 0.8rem;
+  }
+  .sec-tag::before { content: ''; width: 24px; height: 2px; background: var(--gold); }
+
+  .sec-title {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    color: var(--navy);
+  }
+
+  .sec-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── COURSES ─── */
+  #courses { background: var(--off-white); }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .course-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.28s;
+    cursor: pointer;
+  }
+  .course-card:hover { border-color: var(--navy); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(13,32,70,0.12); }
+  .course-card.featured { border-color: var(--gold); background: linear-gradient(135deg, #fffbea 0%, #fff 60%); }
+  .course-card.featured::before { content: 'POPULAR'; position: absolute; top: 1rem; right: 1rem; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; padding: 0.25rem 0.6rem; border-radius: 4px; }
+
+  .course-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .course-name { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.4rem; }
+  .course-board { font-size: 0.75rem; font-weight: 600; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; }
+  .course-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.2rem; }
+
+  .subject-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .stag {
+    font-size: 0.7rem; font-weight: 600;
+    background: var(--light-blue);
+    color: var(--navy-mid);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .course-classes {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .cclass { font-size: 0.8rem; color: var(--muted); }
+  .cclass strong { color: var(--navy); font-size: 1rem; }
+
+  .enroll-btn {
+    font-size: 0.78rem; font-weight: 700;
+    color: var(--navy);
+    background: var(--gold);
+    border: none;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .enroll-btn:hover { background: var(--gold-light); }
+
+  /* ─── WHY US ─── */
+  #why {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .why-visual {
+    background: var(--navy);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .why-visual::before {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 200px; height: 200px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.07;
+  }
+
+  .why-visual-title {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .why-visual-sub { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 2rem; }
+
+  .rating-big {
+    font-family: 'Crimson Pro', serif;
+    font-size: 5rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stars-row { color: var(--gold); font-size: 1.2rem; margin: 0.3rem 0; letter-spacing: 0.1em; }
+  .rating-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 2rem; }
+
+  .why-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 1.5rem 0; }
+
+  .mini-stat { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+  .mini-stat .ms-label { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+  .mini-stat .ms-val { font-weight: 700; color: var(--white); font-size: 0.9rem; }
+
+  .hours-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(245,197,24,0.15);
+    border: 1px solid rgba(245,197,24,0.25);
+    color: var(--gold);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+
+  .features-list { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .feat-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.2rem 1.4rem;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.25s;
+  }
+  .feat-item:hover { border-color: var(--gold); background: #fffbea; transform: translateX(4px); }
+
+  .feat-icon {
+    width: 44px; height: 44px;
+    background: var(--light-blue);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .feat-title { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.2rem; }
+  .feat-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+
+  /* ─── NEET SECTION ─── */
+  #neet {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    color: white;
+  }
+
+  #neet::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: radial-gradient(circle, rgba(245,197,24,0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .neet-inner { position: relative; z-index: 2; }
+
+  .neet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 2.5rem;
+  }
+
+  .neet-points { display: flex; flex-direction: column; gap: 1rem; }
+
+  .neet-point {
+    display: flex; align-items: center; gap: 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 1rem 1.4rem;
+    transition: all 0.25s;
+  }
+  .neet-point:hover { background: rgba(245,197,24,0.1); border-color: rgba(245,197,24,0.3); }
+
+  .neet-point-icon {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    color: var(--navy);
+  }
+
+  .neet-point-text { font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.9); }
+
+  .neet-cta-box {
+    background: linear-gradient(135deg, var(--navy-mid), var(--navy-light));
+    border: 1px solid rgba(245,197,24,0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  .neet-label { color: var(--gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .neet-title-box { font-family: 'Crimson Pro', serif; font-size: 2rem; font-weight: 600; color: white; line-height: 1.2; margin-bottom: 0.8rem; }
+  .neet-desc { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 1.8rem; }
+
+  /* ─── SUBJECTS ─── */
+  #subjects { background: var(--off-white); }
+
+  .subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .subj-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: all 0.25s;
+    cursor: default;
+  }
+  .subj-card:hover { border-color: var(--navy); transform: translateY(-3px); box-shadow: 0 12px 28px rgba(13,32,70,0.1); }
+  .subj-card:nth-child(odd):hover { border-color: var(--gold); }
+
+  .subj-icon { font-size: 2rem; margin-bottom: 0.7rem; }
+  .subj-name { font-size: 0.85rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+  .subj-detail { font-size: 0.72rem; color: var(--muted); }
+
+  /* ─── TIMING ─── */
+  #timing {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .timing-visual {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .timing-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 180px; height: 180px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.06;
+  }
+
+  .clock-display {
+    font-family: 'Crimson Pro', serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin: 1rem 0 0.3rem;
+  }
+
+  .timing-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
+
+  .timing-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .timing-row:last-child { border-bottom: none; }
+  .timing-day { font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; }
+  .timing-time { font-size: 0.85rem; color: var(--gold); font-weight: 700; }
+  .timing-open { font-size: 0.7rem; background: rgba(46,213,115,0.15); color: #2ed573; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 600; }
+
+  .timing-info { display: flex; flex-direction: column; gap: 1.4rem; }
+
+  .tinfo-card {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.2rem;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.25s;
+  }
+  .tinfo-card:hover { border-color: var(--gold); background: #fffbea; }
+
+  .tinfo-icon {
+    width: 42px; height: 42px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .tinfo-title { font-weight: 700; font-size: 0.9rem; color: var(--navy); margin-bottom: 0.2rem; }
+  .tinfo-val { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+  /* ─── CONTACT ─── */
+  #contact { background: var(--off-white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-items { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+
+  .citem {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1rem 1.2rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.22s;
+  }
+  .citem:hover { border-color: var(--navy); }
+
+  .citem-icon {
+    width: 40px; height: 40px;
+    background: var(--navy);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .citem-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.2rem; }
+  .citem-val { font-size: 0.92rem; font-weight: 600; color: var(--navy); line-height: 1.4; }
+  .citem-val a { color: inherit; text-decoration: none; }
+
+  .wa-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    transition: all 0.22s;
+  }
+  .wa-btn:hover { background: #1dab54; transform: translateY(-2px); }
+
+  .enroll-form {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 40px rgba(13,32,70,0.07);
+  }
+
+  .form-heading { font-family: 'Crimson Pro', serif; font-size: 1.6rem; font-weight: 600; color: var(--navy); margin-bottom: 1.6rem; }
+  .form-heading span { color: var(--gold-dark); font-style: italic; }
+
+  .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .fgroup { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+  .fgroup label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--navy); }
+
+  .fgroup input,
+  .fgroup select,
+  .fgroup textarea {
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.88rem;
+    color: var(--navy);
+    background: var(--off-white);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .fgroup input:focus, .fgroup select:focus, .fgroup textarea:focus { border-color: var(--navy); background: white; }
+
+  .fsub {
+    width: 100%; padding: 0.9rem;
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Sora', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.22s;
+    letter-spacing: 0.03em;
+    margin-top: 0.3rem;
+  }
+  .fsub:hover { background: var(--navy-light); transform: translateY(-1px); }
+
+  /* ─── MAP ─── */
+  .map-section { padding: 0 5vw 5rem; }
+
+  .map-box {
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light-blue);
+    text-align: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--navy);
+  }
+
+  .map-box p { font-weight: 700; font-size: 1rem; }
+  .map-box small { font-size: 0.8rem; color: var(--muted); }
+  .map-box .map-icon { font-size: 2.5rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.65);
+    padding: 3.5rem 5vw 2rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 2rem;
+  }
+
+  .footer-brand { }
+  .footer-logo-text { font-family: 'Crimson Pro', serif; font-size: 1.8rem; font-weight: 600; color: white; margin-bottom: 0.3rem; }
+  .footer-logo-text span { color: var(--gold); }
+  .footer-tagline { font-size: 0.82rem; margin-bottom: 1rem; line-height: 1.6; }
+  .footer-reg { font-size: 0.72rem; background: rgba(245,197,24,0.1); border: 1px solid rgba(245,197,24,0.2); color: var(--gold); padding: 0.4rem 0.8rem; border-radius: 4px; display: inline-block; }
+
+  .footer-col h4 { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 1rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem;
+    flex-wrap: wrap; gap: 0.8rem;
+  }
+
+  /* ─── FLOATING WA ─── */
+  .wa-float {
+    position: fixed; bottom: 1.8rem; right: 1.8rem;
+    width: 56px; height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+    z-index: 500;
+    transition: transform 0.25s;
+    animation: popIn 0.4s 1.5s both;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @keyframes popIn {
+    from { transform: scale(0); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .hamburger { display: flex; }
+    #hero { grid-template-columns: 1fr; padding-top: 90px; min-height: auto; }
+    .hero-right { display: none; }
+    #why { grid-template-columns: 1fr; }
+    .why-visual { order: -1; }
+    .neet-grid { grid-template-columns: 1fr; }
+    .subjects-grid { grid-template-columns: repeat(2, 1fr); }
+    #timing { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .frow { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">S</div>
+    <div class="nav-logo-text">
+      <strong>SAMBHAVAM</strong>
+      <span>Coaching Institute</span>
+    </div>
+  </a>
+  <ul>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#neet">NEET</a></li>
+    <li><a href="#subjects">Subjects</a></li>
+    <li><a href="#timing">Timings</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-admit">Enroll Now</a></li>
+  </ul>
+  <div class="hamburger" id="hbg"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-badge">4.5 ★ Rated · Kota, Rajasthan</div>
+    <h1>Where Students<br>Find Their<br><em>True Potential.</em></h1>
+    <p class="hero-sub">Expert coaching for CBSE & RBSE students from Class VI to XII. Science, Maths, English & more — taught with clarity and dedication in Borkhera, Kota.</p>
+    <div class="hero-classes">
+      <span class="class-pill gold">CBSE</span>
+      <span class="class-pill gold">RBSE</span>
+      <span class="class-pill">Class VI–X</span>
+      <span class="class-pill">Class XI–XII</span>
+      <span class="class-pill">PCM / PCB</span>
+      <span class="class-pill">NEET</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-gold">Enroll Now</a>
+      <a href="tel:+918005799939" class="btn-ghost">📞 Call Us</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-admit-badge">🎓 Admissions Open 2025–26</div>
+    <div class="stat-card" style="animation: fadeUp 0.8s 0.9s both; opacity:0">
+      <div class="num">6th–12th</div>
+      <div class="label">All Classes — CBSE & RBSE</div>
+    </div>
+    <div class="stat-card" style="animation: fadeUp 0.8s 1.1s both; opacity:0">
+      <div class="num">4.5 ★</div>
+      <div class="label">Google Rating · Student Trust</div>
+    </div>
+    <div class="stat-card" style="animation: fadeUp 0.8s 1.3s both; opacity:0">
+      <div class="num">3–8 PM</div>
+      <div class="label">Open 7 Days a Week</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="marquee-item">📚 CBSE Coaching <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">📗 RBSE Coaching <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">🔬 PCM / PCB Streams <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">🏥 NEET Preparation <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">➕ Mathematics Expert Faculty <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">🗣 English Medium Classes <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">📍 Borkhera, Kota, Rajasthan <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">📚 CBSE Coaching <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">📗 RBSE Coaching <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">🔬 PCM / PCB Streams <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">🏥 NEET Preparation <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">➕ Mathematics Expert Faculty <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">🗣 English Medium Classes <span class="marquee-sep">■</span></span>
+    <span class="marquee-item">📍 Borkhera, Kota, Rajasthan <span class="marquee-sep">■</span></span>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section id="courses" class="reveal">
+  <div class="sec-tag">Programs Offered</div>
+  <h2 class="sec-title">Courses at Sambhavam</h2>
+  <p class="sec-desc">Whether your child is in middle school or preparing for board exams, we have the right program — taught by expert faculty in English medium.</p>
+
+  <div class="courses-grid">
+    <div class="course-card featured">
+      <div class="course-icon">📐</div>
+      <div class="course-name">Foundation Batch</div>
+      <div class="course-board">CBSE / RBSE · English Medium</div>
+      <div class="course-desc">Strong foundation in core subjects for classes 6–8. Build concepts early, score confidently later.</div>
+      <div class="subject-tags">
+        <span class="stag">Maths</span>
+        <span class="stag">Science</span>
+        <span class="stag">English</span>
+        <span class="stag">SST</span>
+        <span class="stag">Hindi</span>
+      </div>
+      <div class="course-classes">
+        <div class="cclass">Classes <strong>VI – VIII</strong></div>
+        <a href="#contact" class="enroll-btn">Enroll →</a>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-icon">📊</div>
+      <div class="course-name">Secondary Excellence</div>
+      <div class="course-board">CBSE / RBSE · State & Board</div>
+      <div class="course-desc">Intensive coaching for Class 9 & 10 board preparation. Focus on accuracy and speed in all subjects.</div>
+      <div class="subject-tags">
+        <span class="stag">Maths</span>
+        <span class="stag">Science</span>
+        <span class="stag">English</span>
+        <span class="stag">SST</span>
+        <span class="stag">Hindi</span>
+      </div>
+      <div class="course-classes">
+        <div class="cclass">Classes <strong>IX – X</strong></div>
+        <a href="#contact" class="enroll-btn">Enroll →</a>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-icon">⚗️</div>
+      <div class="course-name">Senior Science — PCM</div>
+      <div class="course-board">CBSE / RBSE · Physics, Chemistry, Maths</div>
+      <div class="course-desc">Rigorous preparation for Class 11 & 12 PCM stream including board + competitive exam focus.</div>
+      <div class="subject-tags">
+        <span class="stag">Physics</span>
+        <span class="stag">Chemistry</span>
+        <span class="stag">Maths</span>
+      </div>
+      <div class="course-classes">
+        <div class="cclass">Classes <strong>XI – XII</strong></div>
+        <a href="#contact" class="enroll-btn">Enroll →</a>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-icon">🧬</div>
+      <div class="course-name">Senior Science — PCB</div>
+      <div class="course-board">CBSE / RBSE + NEET Track</div>
+      <div class="course-desc">PCB batch designed for medical aspirants. Board excellence combined with NEET concept clarity.</div>
+      <div class="subject-tags">
+        <span class="stag">Physics</span>
+        <span class="stag">Chemistry</span>
+        <span class="stag">Biology</span>
+      </div>
+      <div class="course-classes">
+        <div class="cclass">Classes <strong>XI – XII</strong></div>
+        <a href="#contact" class="enroll-btn">Enroll →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why" class="reveal" style="padding: 5.5rem 5vw;">
+  <div class="why-visual">
+    <div class="why-visual-title">Sambhavam</div>
+    <div class="why-visual-sub">Coaching Institute · Kota</div>
+
+    <div class="rating-big">4.5</div>
+    <div class="stars-row">★★★★½</div>
+    <div class="rating-label">Google Student Rating</div>
+
+    <div class="why-divider"></div>
+    <div class="mini-stat"><span class="ms-label">Address</span><span class="ms-val">Borkhera, Kota</span></div>
+    <div class="mini-stat"><span class="ms-label">Medium</span><span class="ms-val">English</span></div>
+    <div class="mini-stat"><span class="ms-label">Board</span><span class="ms-val">CBSE & RBSE</span></div>
+    <div class="mini-stat"><span class="ms-label">Parking</span><span class="ms-val">✅ Available</span></div>
+    <div class="mini-stat"><span class="ms-label">Classes</span><span class="ms-val">VI to XII</span></div>
+    <div class="hours-badge">🕐 Open Daily: 3:00 PM – 8:00 PM</div>
+  </div>
+
+  <div>
+    <div class="sec-tag">Why Choose Us</div>
+    <h2 class="sec-title">A right coaching is a stepping stone to success.</h2>
+    <p class="sec-desc">At Sambhavam, we go beyond textbooks. Our approach builds conceptual clarity, exam confidence, and lasting academic skills.</p>
+
+    <div class="features-list">
+      <div class="feat-item">
+        <div class="feat-icon">🎯</div>
+        <div>
+          <div class="feat-title">Speed & Accuracy Training</div>
+          <div class="feat-desc">Timed practice sessions train students to answer correctly and quickly — critical for board and competitive exams.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">💡</div>
+        <div>
+          <div class="feat-title">Clarity in Concepts</div>
+          <div class="feat-desc">We explain 'why' before 'how'. Students who understand deeply never forget — even under exam pressure.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">⏱</div>
+        <div>
+          <div class="feat-title">Time Management Skills</div>
+          <div class="feat-desc">Learn how to plan exam papers, allocate time per section, and avoid last-minute panic with structured practice.</div>
+        </div>
+      </div>
+      <div class="feat-item">
+        <div class="feat-icon">🚫</div>
+        <div>
+          <div class="feat-title">Avoid Silly Mistakes</div>
+          <div class="feat-desc">Regular error analysis helps students identify their weak patterns and eliminate careless mistakes permanently.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEET SECTION -->
+<section id="neet" class="reveal">
+  <div class="neet-inner">
+    <div style="text-align:center; max-width:600px; margin: 0 auto 0.5rem;">
+      <div class="sec-tag" style="justify-content:center; color:var(--gold);">Medical Entrance</div>
+      <h2 class="sec-title" style="color:white;">Turning NEET Challenges<br>into <em style="color:var(--gold);">Triumphs.</em></h2>
+      <p class="sec-desc" style="color:rgba(255,255,255,0.55); margin:0 auto 0;">Our PCB + NEET track is built specifically to prepare students for the medical entrance exam alongside their board exams.</p>
+    </div>
+    <div class="neet-grid">
+      <div class="neet-points">
+        <div class="neet-point"><div class="neet-point-icon">⚡</div><div class="neet-point-text">Speed and Accuracy drills — simulate real NEET conditions</div></div>
+        <div class="neet-point"><div class="neet-point-icon">🚫</div><div class="neet-point-text">Avoid Silly Mistakes — targeted error reduction training</div></div>
+        <div class="neet-point"><div class="neet-point-icon">⏱</div><div class="neet-point-text">Time Management — structured practice for exam readiness</div></div>
+        <div class="neet-point"><div class="neet-point-icon">💡</div><div class="neet-point-text">Clarity in Concepts — Biology, Physics, Chemistry from ground up</div></div>
+        <div class="neet-point"><div class="neet-point-icon">📋</div><div class="neet-point-text">Mock tests, chapter-wise practice & full-syllabus revision</div></div>
+      </div>
+
+      <div class="neet-cta-box">
+        <div class="neet-label">Medical Aspirants</div>
+        <div class="neet-title-box">Start Your NEET Journey at Sambhavam</div>
+        <div class="neet-desc">Classes XI & XII PCB students can join our dedicated NEET track alongside board preparation. Limited seats — early enrollment recommended.</div>
+        <a href="#contact" class="btn-gold" style="display:inline-block;">📝 Enquire for NEET Batch</a>
+        <div style="font-size:0.78rem; color:rgba(255,255,255,0.35); margin-top:1rem;">Call: +91 80057 99939</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBJECTS -->
+<section id="subjects" class="reveal">
+  <div class="sec-tag">What We Teach</div>
+  <h2 class="sec-title">All Core Subjects Covered</h2>
+  <p class="sec-desc">Our faculty covers all major subjects across CBSE and RBSE curricula in English medium — from foundational to advanced level.</p>
+
+  <div class="subjects-grid">
+    <div class="subj-card"><div class="subj-icon">➕</div><div class="subj-name">Mathematics</div><div class="subj-detail">Class VI to XII · All Boards</div></div>
+    <div class="subj-card"><div class="subj-icon">🔬</div><div class="subj-name">Science</div><div class="subj-detail">Physics · Chemistry · Biology</div></div>
+    <div class="subj-card"><div class="subj-icon">🗣</div><div class="subj-name">English</div><div class="subj-detail">Grammar · Literature · Writing</div></div>
+    <div class="subj-card"><div class="subj-icon">🌍</div><div class="subj-name">Social Science</div><div class="subj-detail">History · Geo · Civics · Eco</div></div>
+    <div class="subj-card"><div class="subj-icon">🇮🇳</div><div class="subj-name">Hindi</div><div class="subj-detail">Language · Literature</div></div>
+  </div>
+</section>
+
+<!-- TIMING -->
+<section id="timing" class="reveal" style="padding: 5.5rem 5vw;">
+  <div class="timing-visual">
+    <div class="timing-label">Sambhavam Coaching Institute</div>
+    <div class="clock-display">3:00 – 8:00 PM</div>
+    <div style="font-size:0.78rem; color:rgba(255,255,255,0.45); margin-bottom:1.5rem;">Open 7 days a week</div>
+
+    <div class="timing-row"><span class="timing-day">Monday</span><span class="timing-time">3:00 PM – 8:00 PM</span><span class="timing-open">OPEN</span></div>
+    <div class="timing-row"><span class="timing-day">Tuesday</span><span class="timing-time">3:00 PM – 8:00 PM</span><span class="timing-open">OPEN</span></div>
+    <div class="timing-row"><span class="timing-day">Wednesday</span><span class="timing-time">3:00 PM – 8:00 PM</span><span class="timing-open">OPEN</span></div>
+    <div class="timing-row"><span class="timing-day">Thursday</span><span class="timing-time">3:00 PM – 8:00 PM</span><span class="timing-open">OPEN</span></div>
+    <div class="timing-row"><span class="timing-day">Friday</span><span class="timing-time">3:00 PM – 8:00 PM</span><span class="timing-open">OPEN</span></div>
+    <div class="timing-row"><span class="timing-day">Saturday</span><span class="timing-time">3:00 PM – 8:00 PM</span><span class="timing-open">OPEN</span></div>
+    <div class="timing-row"><span class="timing-day">Sunday</span><span class="timing-time">3:00 PM – 8:00 PM</span><span class="timing-open">OPEN</span></div>
+  </div>
+
+  <div>
+    <div class="sec-tag">Visit & Connect</div>
+    <h2 class="sec-title">Find Us, Visit Us, Join Us.</h2>
+    <p class="sec-desc">We're open every day — walk in during hours or call ahead to schedule a free counselling session for your ward.</p>
+
+    <div class="timing-info">
+      <div class="tinfo-card">
+        <div class="tinfo-icon">📞</div>
+        <div>
+          <div class="tinfo-title">Call / WhatsApp</div>
+          <div class="tinfo-val"><a href="tel:+918005799939" style="color:inherit;">+91 80057 99939</a></div>
+        </div>
+      </div>
+      <div class="tinfo-card">
+        <div class="tinfo-icon">🚗</div>
+        <div>
+          <div class="tinfo-title">Parking Available</div>
+          <div class="tinfo-val">On-site parking for parents & students — no hassle visits.</div>
+        </div>
+      </div>
+      <div class="tinfo-card">
+        <div class="tinfo-icon">🎓</div>
+        <div>
+          <div class="tinfo-title">Admission Process</div>
+          <div class="tinfo-val">Walk in or call to check batch availability. Admissions open now for 2025–26.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+  <div class="sec-tag">Get In Touch</div>
+  <h2 class="sec-title">Enquire or Enroll Today</h2>
+  <p class="sec-desc">Fill in the form below and we'll get back to you within 24 hours, or call us directly to speak with our team.</p>
+
+  <div class="contact-grid">
+    <div>
+      <div class="contact-items">
+        <div class="citem">
+          <div class="citem-icon">📞</div>
+          <div>
+            <div class="citem-label">Call Us</div>
+            <div class="citem-val"><a href="tel:+918005799939">+91 80057 99939</a></div>
+          </div>
+        </div>
+        <div class="citem">
+          <div class="citem-icon">🕐</div>
+          <div>
+            <div class="citem-label">Timings</div>
+            <div class="citem-val">3:00 PM – 8:00 PM · 7 days a week</div>
+          </div>
+        </div>
+        <div class="citem">
+          <div class="citem-icon">⭐</div>
+          <div>
+            <div class="citem-label">Google Rating</div>
+            <div class="citem-val">4.5 / 5.0 ★ — Highly Rated in Kota</div>
+          </div>
+        </div>
+        <div class="citem">
+          <div class="citem-icon">🎓</div>
+          <div>
+            <div class="citem-label">Admissions</div>
+            <div class="citem-val">Open for 2025–26 · Walk in or call to check batch availability</div>
+          </div>
+        </div>
+      </div>
+      <a href="https://wa.me/918005799939" class="wa-btn" target="_blank">💬 Chat on WhatsApp</a>
+    </div>
+
+    <div class="enroll-form">
+      <div class="form-heading">Enquire for <span>Admission</span></div>
+      <div class="frow">
+        <div class="fgroup"><label>Student Name</label><input id="student_name" type="text" placeholder="Full name" required></div>
+        <div class="fgroup"><label>Parent Name</label><input id="parent_name" type="text" placeholder="Parent / Guardian" required></div>
+      </div>
+      <div class="frow">
+        <div class="fgroup"><label>Phone Number</label><input id="phone" type="tel" placeholder="+91 XXXXX XXXXX" required></div>
+        <div class="fgroup"><label>Class</label>
+          <select id="student_class">
+            <option value="">Select class</option>
+            <option>Class VI</option>
+            <option>Class VII</option>
+            <option>Class VIII</option>
+            <option>Class IX</option>
+            <option>Class X</option>
+            <option>Class XI — PCM</option>
+            <option>Class XI — PCB</option>
+            <option>Class XII — PCM</option>
+            <option>Class XII — PCB</option>
+          </select>
+        </div>
+      </div>
+      <div class="fgroup">
+        <label>Board</label>
+        <select id="board">
+          <option>CBSE</option>
+          <option>RBSE (Rajasthan Board)</option>
+          <option>Not sure — need guidance</option>
+        </select>
+      </div>
+      <div class="fgroup"><label>Message / Query (Optional)</label><textarea id="message" rows="3" placeholder="Any specific subject, batch timing queries..."></textarea></div>
+      <button class="fsub" id="waBtn" onclick="submitForm('whatsapp')" style="background:#25D366; margin-top:0.3rem;">
+        💬 Send Enquiry on WhatsApp
+      </button>
+      <div id="form-status" style="margin-top:0.6rem; font-size:0.85rem; text-align:center; display:none;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-section reveal">
+  <div class="map-box">
+    <div class="map-icon">🗺️</div>
+    <p>Plot No. 2, Samridhi Nagar Vistar, Borkhera, Kota</p>
+    <small>Replace this block with a Google Maps embed iframe for your live website</small>
+    <a href="https://maps.google.com/?q=Sambhavam+Coaching+Institute+Borkhera+Kota" target="_blank" style="margin-top:0.8rem; background:var(--navy); color:white; padding:0.6rem 1.2rem; border-radius:8px; text-decoration:none; font-size:0.82rem; font-weight:700;">📍 Open in Google Maps</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo-text"><span>S</span>ambhavam</div>
+      <div style="font-size:0.78rem; color:rgba(255,255,255,0.4); margin-bottom:0.8rem;">Coaching Institute</div>
+      <div class="footer-tagline">A right coaching is a stepping stone to success. Serving students from Class VI to XII across CBSE & RBSE in English medium from Borkhera, Kota.</div>
+      <div class="footer-reg">📍 Borkhera, Kota, Rajasthan 324002</div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#courses">Our Courses</a></li>
+        <li><a href="#neet">NEET Coaching</a></li>
+        <li><a href="#subjects">Subjects</a></li>
+        <li><a href="#timing">Timings</a></li>
+        <li><a href="#contact">Enquire Now</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+918005799939">📞 80057 99939</a></li>
+        <li><a href="https://wa.me/918005799939">💬 WhatsApp Us</a></li>
+        <li><a href="#">3:00 PM – 8:00 PM, Daily</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sambhavam Coaching Institute. All rights reserved.</span>
+    <span style="color:rgba(255,255,255,0.3);">CBSE · RBSE · Class VI–XII · Kota, Rajasthan</span>
+  </div>
+</footer>
+
+<!-- WhatsApp Floating -->
+<a href="https://wa.me/918005799939" class="wa-float" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<script>
+
+  // Institute WhatsApp number (no +, no spaces)
+  const INSTITUTE_WHATSAPP = "918005799939";
+
+  async function submitForm(mode) {
+    const status  = document.getElementById('form-status');
+
+    // Collect values
+    const studentName = document.getElementById('student_name').value.trim();
+    const parentName  = document.getElementById('parent_name').value.trim();
+    const phone       = document.getElementById('phone').value.trim();
+    const cls         = document.getElementById('student_class').value;
+    const board       = document.getElementById('board').value;
+    const message     = document.getElementById('message').value.trim();
+
+    // Validation
+    if (!studentName || !parentName || !phone || !cls) {
+      status.style.display = 'block';
+      status.style.color   = '#e02020';
+      status.textContent   = '⚠️ Kripya sabhi required fields bharen (Student Name, Parent Name, Phone, Class).';
+      return;
+    }
+
+    // Build WhatsApp message
+    const waText = encodeURIComponent(
+      `🎓 *New Admission Enquiry — Sambhavam Coaching Institute*\n\n` +
+      `👤 *Student Name:* ${studentName}\n` +
+      `👨‍👩‍👦 *Parent Name:* ${parentName}\n` +
+      `📞 *Phone:* ${phone}\n` +
+      `📚 *Class:* ${cls}\n` +
+      `📋 *Board:* ${board}\n` +
+      `💬 *Message:* ${message || 'No additional message'}\n\n` +
+      `_Sent from Sambhavam website_`
+    );
+
+    // Open WhatsApp
+    window.open(`https://wa.me/${INSTITUTE_WHATSAPP}?text=${waText}`, '_blank');
+
+    // Show confirmation
+    status.style.display = 'block';
+    status.style.color   = '#25D366';
+    status.textContent   = '✅ WhatsApp khul gaya! Message already filled hai — bas Send dabao.';
+
+    // Clear form after 3 seconds
+    setTimeout(() => {
+      ['student_name','parent_name','phone','message'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('student_class').selectedIndex = 0;
+      status.style.display = 'none';
+    }, 4000);
+  }
+
+  // Scroll reveals
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Sticky nav shadow
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.boxShadow =
+      window.scrollY > 50 ? '0 4px 32px rgba(13,32,70,0.35)' : '';
+  });
+</script>
+</body>
+</html>
